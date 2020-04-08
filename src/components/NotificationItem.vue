@@ -3,7 +3,7 @@
      <li class="notificationItem list-group-item" 
         v-bind:class="{'readNotification': !notification.read}"
         @click="$emit('select-notification', notification.notificationId)">
-        {{this.notification.featured}} {{this.notification.projectName}}({{this.notification.categoryName}}) has been updated
+        {{this.notification.projectName}}({{this.notification.categoryName}}) has been updated
      </li>
   </div>
 </template>

@@ -1,9 +1,12 @@
 <template>
   <div>
     <b-row class="filter">
-      <b-col cols="2" class="FilterContent">
+       <b-col cols="1" class="FilterContent">
         Feature
-         <b-form-checkbox label="Feature:" v-model="isFeatured" @change="checkIsFeature($event)" name="isFeatures" v-show="isExpanded" switch />
+      </b-col>
+      <b-col cols="1" class="FilterContentCheckBox">
+        <b-form-checkbox class="form-check-input-reverse" v-model="isFeatured" @change="checkIsFeature($event)" name="isFeatures" switch > 
+        </b-form-checkbox>
       </b-col>
       <b-col cols="2" class="FilterContent">
          <b-form-group label="Category: ">
@@ -126,6 +129,11 @@ export default {
 
 .FilterContent {
   padding-top:10px;
+}
+
+.FilterContentCheckBox {
+  padding-top:10px;
+  margin-left: -30px;
 }
 
 </style>

@@ -129,7 +129,7 @@ export default {
         // show toast pop up
          this.$bvToast.toast(newNotification.projectName + ' has been updated', {
           title: 'New Updates',
-          autoHideDelay: 5000,
+          autoHideDelay: 3500,
           appendToast: false
         })
       })
@@ -151,7 +151,7 @@ export default {
 
               this.$bvToast.toast(newNotification.projectName + ' has been updated', {
                 title: 'New Updates',
-                autoHideDelay: 5000,
+                autoHideDelay: 3500,
                 appendToast: false
               })
           }else{
@@ -172,7 +172,7 @@ export default {
 
               this.$bvToast.toast(newNotification.projectName + ' has been updated', {
                 title: 'New Updates',
-                autoHideDelay: 5000,
+                autoHideDelay: 3500,
                 appendToast: false
               })
             }
