@@ -1,4 +1,4 @@
-# frontend-oding-challenge
+# frontend-coding-challenge
 
 ## Project setup
 ```
