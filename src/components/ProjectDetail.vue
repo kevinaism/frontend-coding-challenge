@@ -29,7 +29,7 @@
      </b-col>
      <b-col cols="4">
        <div>
-         <img src="../assets/logo.png">
+         <img :src="getPath()">
        </div>
      </b-col>
     </b-row>
@@ -74,6 +74,18 @@ export default {
     },
     getGoal(goal) {
     return goal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
+    getPath(){
+      console.log('get src path');
+      const CategoryIconMap = {
+        1:  "angular",
+        2:  "react",
+        3:  "react",
+        4:  "logo",
+      }
+      console.log("../assets/"+ CategoryIconMap[this.project.categoryId] +".png");
+      return require("../assets/"+ CategoryIconMap[this.project.categoryId] +".png");
     }
   }
   

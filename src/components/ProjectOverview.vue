@@ -4,8 +4,11 @@
        <b-col cols="3">
          Name:
        </b-col>
-       <b-col cols="9">
+       <b-col cols="7">
          {{project.projectName}}
+       </b-col>
+       <b-col cols="1">
+         <b-icon icon="star-fill" v-show="project.featured"></b-icon>
        </b-col>
      </b-row>
      <b-row>

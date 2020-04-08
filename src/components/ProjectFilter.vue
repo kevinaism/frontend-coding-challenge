@@ -1,11 +1,11 @@
 <template>
   <div>
     <b-row class="filter">
-      <b-col cols="2">
+      <b-col cols="2" class="FilterContent">
         Feature
-         <b-form-checkbox label="Feature:" v-model="isFeatured" @change="checkIsFeature($event)" name="isFeatures" switch />
+         <b-form-checkbox label="Feature:" v-model="isFeatured" @change="checkIsFeature($event)" name="isFeatures" v-show="isExpanded" switch />
       </b-col>
-      <b-col cols="2">
+      <b-col cols="2" class="FilterContent">
          <b-form-group label="Category: ">
           <b-form-checkbox-group
             v-model="selectedCategory"
@@ -13,24 +13,34 @@
             plain
             stacked
             @change="checkSelectedCategory($event)"
+            v-show="isExpanded"
            ></b-form-checkbox-group>
           </b-form-group>
       </b-col>
-      <b-col cols="3">
+      <b-col cols="2" class="FilterContent">
         Funding Goal:
-        <b-form-input type="number" v-model="fromFunding" :min="0" @change="checkfromFunding($event)"></b-form-input>
-        to
-        <b-form-input type="number" v-model="toFunding" :max="maxFunding" @change="checkToFunding($event)"></b-form-input>
+        <div v-show="isExpanded">
+          <b-form-input type="number" v-model="fromFunding" :min="0" @change="checkfromFunding($event)"></b-form-input>
+          to
+          <b-form-input type="number" v-model="toFunding" :max="maxFunding" @change="checkToFunding($event)"></b-form-input>
+        </div>
       </b-col>
-      <b-col cols="4">
+      <b-col cols="4" class="FilterContent">
         <div>
-          <label for="range-1">Minimum Percentage Completion:{{this.percentage}}</label>
-          <b-form-input id="range-1" v-model="percentage" type="range" min="0" max="100" @change="checkPercentage($event)"></b-form-input>
+          <label for="range-1">Minimum Percentage Completion: {{this.percentage}}</label>
+          <b-form-input id="range-1" 
+                        v-model="percentage" 
+                        type="range" 
+                        min="0" max="100" 
+                        @change="checkPercentage($event)"
+                        v-show="isExpanded" >
+          </b-form-input>
           <!-- <div class="mt-2">Value: {{this.percentage}}</div> -->
         </div>
       </b-col>
       <b-col>
         <div>
+         <b-button variant="link" @click="expand(event)">Expand</b-button>
          <b-button variant="link" @click="resetFilter(event)">clear</b-button>
         </div>
       </b-col>
@@ -44,6 +54,7 @@ export default {
   props:  ["categoryList", "maxFunding"],
   data(){
     return { 
+      isExpanded:false,
       isFeatured: false,
       selectedCategory:[],
       percentage: 0,
@@ -94,7 +105,11 @@ export default {
       this.fromFunding = 0;
       this.toFunding = this.maxFunding;
       this.$emit('reset-filter');
+    },
+    expand(){
+      this.isExpanded = !this.isExpanded;
     }
+    
   },
    created(){
     this.isFeatured = false;
@@ -107,6 +122,10 @@ export default {
 <style scoped>
 .filter{
   text-align: left;
+}
+
+.FilterContent {
+  padding-top:10px;
 }
 
 </style>
