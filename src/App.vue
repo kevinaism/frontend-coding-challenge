@@ -84,7 +84,18 @@ export default {
           fundingGoal: 1000000,
           percentageComplete: 10,
           createdAt: "2020-04-01T00:00:00",
-        }
+        },
+        {
+          projectId: "8182fad6-06df-4af4-9fad-311578efb840",
+          projectName: "Project 6",
+          projectDescription: "<p>  This project will develop a module offered to level 2 Undergraduate students and will seek to vdevelop student’s skills in collaborative working and information literacy while still advancing their discipline knowledge. The subject librarian will be invited to conduct an inquiry-based workshop with the students at the start of the module to prepare them for a literature search activity and will also provide ongoing support for students via discussion boards in the VLE. There are some contentious issues in the discipline that students historically have found problematic to analyse, these topics will be used to provide a stimulus for the literature searching activity and will then form the subject of the class debates in weeks 6 and 7. Students will be required to submit a reflective report on their literature search with an annotated bibliography to demonstrate their assessment of the quality of the resources they have found. </p>",
+          featured: true,
+          categoryId: 1,
+          categoryName: "Technology",
+          fundingGoal: 3000000,
+          percentageComplete: 100,
+          createdAt: "2019-10-01T00:00:00",
+        }, 
       ],
       notificationList: [
         {

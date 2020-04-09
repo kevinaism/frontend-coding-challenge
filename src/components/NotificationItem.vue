@@ -3,7 +3,7 @@
      <li class="notificationItem list-group-item" 
         v-bind:class="{'readNotification': !notification.read}"
         @click="$emit('select-notification', notification.notificationId)">
-        {{this.notification.projectName}}({{this.notification.categoryName}}) has been updated
+        {{this.notification.projectName}} in category {{this.notification.categoryName}} of funding goal {{this.notification.fundingGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} has been updated
      </li>
   </div>
 </template>
@@ -42,7 +42,7 @@ a {
 }
 
 .notificationItem{
-  width: 600px
+  width: 800px
 }
 
 .readNotification{

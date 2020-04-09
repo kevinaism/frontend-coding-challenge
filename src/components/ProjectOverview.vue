@@ -1,5 +1,5 @@
 <template>
-  <li class="overview list-group-item" @click="$emit('select-project', project.projectId)">
+  <li class="overview list-group-item" v-bind:class="{'completedProject': project.percentageComplete == 100}" @click="$emit('select-project', project.projectId)">
      <b-row>
        <b-col cols="3">
          Name:
@@ -21,10 +21,10 @@
      </b-row>
       <b-row>
        <b-col cols="3">
-         Goal:
+         Status:
        </b-col>
        <b-col cols="9">
-          {{calculatePercentage(project.fundingGoal, project.percentageComplete)}} / {{project.fundingGoal}}
+          {{calculatePercentage(project.fundingGoal, project.percentageComplete)}} / {{project.fundingGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}
        </b-col>
      </b-row>
      <b-row>
@@ -48,7 +48,7 @@ export default {
     calculatePercentage(goal, percentage){
       // console.log('calculate', goal);
       // console.log('calculate', percentage);
-      return Math.floor(parseInt(goal)* (1 - parseInt(percentage) /100))
+      return Math.floor(parseInt(goal)* (parseInt(percentage)/100)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     },
     dateDifference(createdAt){
       // console.log('origin', createdAt);
@@ -90,5 +90,9 @@ hr {
 
 .createdate{
   padding-top: 15px;
+}
+
+.completedProject{
+  background-color: darkgray;
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <b-row class="filter">
        <b-col cols="1" class="FilterContent">
-        Feature
+        Feature: 
       </b-col>
       <b-col cols="1" class="FilterContentCheckBox">
         <b-form-checkbox class="form-check-input-reverse" v-model="isFeatured" @change="checkIsFeature($event)" name="isFeatures" switch > 
@@ -42,7 +42,7 @@
         </div>
       </b-col>
       <b-col>
-        <div>
+        <div class="filterButtonGp">
          <b-button variant="link" @click="expand(event)">Expand</b-button>
          <b-button variant="link" @click="resetFilter(event)">clear</b-button>
         </div>
@@ -134,6 +134,10 @@ export default {
 .FilterContentCheckBox {
   padding-top:10px;
   margin-left: -30px;
+}
+
+.filterButtonGp{
+  text-align: end;
 }
 
 </style>

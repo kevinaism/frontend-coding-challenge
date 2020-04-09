@@ -16,6 +16,12 @@
             <ul class="list-group" v-bind:key="project.projectId" v-for="project in this.projectList"> 
               <ProjectOverview v-bind:project="project" v-on:select-project="selectProject" />
             </ul>
+            <div class="pagination">
+              <b-list-group horizontal>
+                 <b-list-group-item v-bind:key="n" v-for="n in this.totalPage" 
+                                    @click="pagination(n)">{{n}} </b-list-group-item>
+              </b-list-group>
+            </div>
         </b-col>
         <b-col cols="8"> 
           <ProjectDetail v-bind:project="this.project" />
@@ -96,10 +102,23 @@ export default {
         //   percentageComplete: 10,
         //   createdAt: "2020-04-01T00:00:00",
         // }
-      ]
+      ],
+      filteredResult:[],
+      totalPage: 0,
+      itemPerPage: 5,
     }
   },
   methods:{
+    pagination(page){
+      console.log('select page',page);
+      const fromNum = (page-1)*this.itemPerPage;
+      const toNum = page*this.itemPerPage;
+
+      console.log(fromNum);
+      console.log(toNum);
+      this.projectList = this.filteredResult.slice(fromNum , toNum);
+      console.log(this.projectList.slice(fromNum , toNum));
+    },
     selectProject(id){
       console.log('select project');
       this.project = this.projectList.find(project => project.projectId == id)
@@ -121,6 +140,7 @@ export default {
         })
 
       console.log(filteredProject);
+      this.filteredResult = filteredProject;
       this.projectList = filteredProject
     },
     resetFilter(){
@@ -135,6 +155,10 @@ export default {
     this.projectList = [...this.projects];
     this.categoryList = [...new Set(this.projects.map(project =>  project.categoryName))]
     this.maxFunding = Math.max(...this.projects.map(project =>  project.fundingGoal))
+
+    this.totalPage = Math.ceil(this.projects.length/this.itemPerPage);
+    this.filteredResult = [...this.projects];
+    this.projectList = [...this.projects].slice(0,this.itemPerPage);
     // console.log(this.categoryList)
     // console.log(this.maxFunding)
   }
@@ -167,5 +191,9 @@ a {
 
 .projectElement{
   min-height: 700px;
+}
+
+.pagination{
+  justify-content: center;
 }
 </style>

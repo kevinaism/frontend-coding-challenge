@@ -39,7 +39,7 @@
       </b-col>
       <b-col cols= "9" >
         <b-progress class="mt-2" :max="project.fundingGoal" show-value animated height="2rem">
-          <b-progress-bar :value="project.fundingGoal * (project.percentageComplete/ 100)" />
+          <b-progress-bar :value="project.fundingGoal * (project.percentageComplete/ 100)" v-bind:class="{'completeBar': project.percentageComplete == 100}"/>
         </b-progress>
       </b-col>
     </b-row>
@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import categoryIconMap from '../constants/CategoryIconMap.js';
+
 export default {
   name: 'ProjectDetail',
   props:  ["project"],
@@ -78,14 +80,8 @@ export default {
 
     getPath(){
       console.log('get src path');
-      const CategoryIconMap = {
-        1:  "angular",
-        2:  "react",
-        3:  "react",
-        4:  "logo",
-      }
-      console.log("../assets/"+ CategoryIconMap[this.project.categoryId] +".png");
-      return require("../assets/"+ CategoryIconMap[this.project.categoryId] +".png");
+      console.log("../assets/"+ categoryIconMap[this.project.categoryId] +".png");
+      return require("../assets/"+ categoryIconMap[this.project.categoryId] +".png");
     }
   }
   
@@ -124,6 +120,10 @@ li {
   position: absolute; 
   font-size: 20px;
   bottom: 0px;     
+}
+
+.completeBar{
+  background-color: #32CD32;
 }
 
 </style>
