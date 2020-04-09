@@ -19,7 +19,7 @@ rendering and visualisation on UI.
 
 
 Meanwhile, constant folder contains all local constant and they are exported 
-as a file in order to centrailse all constant parameters for better configuratiuon.
+as a file in order to centrailse all constant parameters for better configuration.
 
 
 This project used boostrap library to better render element on UI.
@@ -27,25 +27,25 @@ This project used boostrap library to better render element on UI.
 ## Data Format
 ```
  Funding Project:{
-    projectId: Unique ID of each funding project 
-    projectName: StringName of funding project
+    projectId:          Unique ID of each funding project 
+    projectName:        StringName of funding project
     projectDescription: HTML plain code 
-    featured: Boolean to set if this project is featured or not
-    categoryId: Unique ID of category
-    categoryName: String Name of category
-    fundingGoal: Decimal number of total funding goal
+    featured:           Boolean to set if this project is featured or not
+    categoryId:         Unique ID of category
+    categoryName:       String Name of category
+    fundingGoal:        Decimal number of total funding goal
     percentageComplete: Integer of percentage on funding recived
-    createdAt: String of ISO Date Format
+    createdAt:          String of ISO Date Format
   }
 
  Notification:{
-    notificationId: Unique ID of each notification
-    projectName: String Name of the project
-    categoryName: String Name of category
-    fundingGoal: Decimal number of total funding goal
+    notificationId:     Unique ID of each notification
+    projectName:        String Name of the project
+    categoryName:       String Name of category
+    fundingGoal:        Decimal number of total funding goal
     percentageComplete: Integer of percentage on funding recived
-    featured: Boolean to set if this project is featured or not
-    read: Boolean of user read or not
+    featured:           Boolean to set if this project is featured or not
+    read:               Boolean of user read or not
  }
 ```  
 
@@ -53,12 +53,12 @@ This project used boostrap library to better render element on UI.
 There are some improvements could made with this project.
 
 First, data source could be hosted in a database and this project should use API 
-to retrieve data from database intead of hardcoding in App.vue upon creation.
+to retrieve data from database instead of hard-coding in App.vue upon creation.
 
-Second, notification data should also be inside database, a new notication record 
-will be created when any updates on project record is triggered. This application 
+Second, notification data should also be inside database, a new notification record 
+will be created when updates on project record is triggered. This application 
 could get all notification initially and detect any notification is not read, 
-an toast pop up will show on UI. notification record in database will be updated 
+an toast pop up will show on UI. Notification record in database will be updated 
 when user read that notification on UI, triggered by API.
 
 Third, Pagination should be better present, current behaviour is showing all options
