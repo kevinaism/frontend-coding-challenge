@@ -6,7 +6,7 @@ npm install
 npm run serve
 ```
 
-### Ideas and Concepts
+## Ideas and Concepts
 
 This project consist of 3 pages: Home page, Project page and Notification page, 
 they are controlled by vue router to redirect to different vue component.
@@ -24,7 +24,7 @@ as a file in order to centrailse all constant parameters for better configuratiu
 
 This project used boostrap library to better render element on UI.
 
-### Data Format
+## Data Format
 ```
  Funding Project:{
     projectId: Unique ID of each funding project 
@@ -49,7 +49,7 @@ This project used boostrap library to better render element on UI.
  }
 ```  
 
-### Improvements
+## Improvements
 There are some improvements could made with this project.
 
 First, data source could be hosted in a database and this project should use API 
