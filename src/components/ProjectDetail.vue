@@ -79,8 +79,8 @@ export default {
     },
 
     getPath(){
-      console.log('get src path');
-      console.log("../assets/"+ categoryIconMap[this.project.categoryId] +".png");
+      // console.log('get src path');
+      // console.log("../assets/"+ categoryIconMap[this.project.categoryId] +".png");
       return require("../assets/"+ categoryIconMap[this.project.categoryId] +".png");
     }
   }

@@ -74,31 +74,31 @@ export default {
   },
   methods:{
     checkIsFeature(isFeatured){
-      console.log('event', isFeatured);
+      // console.log('event', isFeatured);
       this.filterOption.isFeatured = isFeatured
        this.$emit('filter-projects', this.filterOption);
       
     },
     checkSelectedCategory(selectedCategory){
       this.filterOption.selectedCategory = selectedCategory
-      console.log('event', selectedCategory);
+      // console.log('event', selectedCategory);
       this.$emit('filter-projects', this.filterOption);
        //this.$emit('filter-projects', isFeatured);
       
     },
     checkPercentage(percentage){
       this.filterOption.minPercentage = percentage
-      console.log('event', percentage);
+      // console.log('event', percentage);
       this.$emit('filter-projects', this.filterOption);
     },
     checkfromFunding(min){
       this.filterOption.fromFunding = min
-      console.log('event', min);
+      // console.log('event', min);
       this.$emit('filter-projects', this.filterOption);
     },
     checkToFunding(max){
       this.filterOption.toFunding = max
-      console.log('event', max);
+      // console.log('event', max);
       this.$emit('filter-projects', this.filterOption);
     },
     resetFilter(){

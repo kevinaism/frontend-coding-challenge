@@ -42,9 +42,9 @@ export default {
   },
   methods:{
     readNotification(id){
-      console.log("Read Notification: ", id);
+      // console.log("Read Notification: ", id);
       this.notifications.find(notification => notification.notificationId == id).read = true
-      console.log(this.notifications);
+      // console.log(this.notifications);
       this.$emit('read-notification', id);
     },
     filterNotification(filter){
@@ -53,8 +53,8 @@ export default {
       var filteredNotification = [];
 
       this.originalNotificationList.map(project => {
-         console.log(project.featured == filter.isFeatured);
-         console.log(project.categoryName);
+        //  console.log(project.featured == filter.isFeatured);
+        //  console.log(project.categoryName);
         if (project.featured == filter.isFeatured 
           && (project.fundingGoal > filter.fromFunding && project.fundingGoal <= filter.toFunding)
           && project.percentageComplete > filter.minPercentage
@@ -62,7 +62,7 @@ export default {
           filteredNotification.push(project)   
         })
 
-      console.log(filteredNotification);
+      // console.log(filteredNotification);
       this.notifications = filteredNotification
     },
     resetFilter(){
@@ -70,7 +70,7 @@ export default {
     }
   },
   created() {
-    console.log(this.$route.params);
+    // console.log(this.$route.params);
     this.originalNotificationList = this.$route.params.notifications;
     this.notifications = this.$route.params.notifications;
     this.categoryList = [...new Set(this.notifications.map(project =>  project.categoryName))]

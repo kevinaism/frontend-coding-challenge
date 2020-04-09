@@ -19,7 +19,8 @@
             <div class="pagination">
               <b-list-group horizontal>
                  <b-list-group-item v-bind:key="n" v-for="n in this.totalPage" 
-                                    @click="pagination(n)">{{n}} </b-list-group-item>
+                                    @click="pagination(n)">{{n}} 
+                  </b-list-group-item>
               </b-list-group>
             </div>
         </b-col>
@@ -110,24 +111,18 @@ export default {
   },
   methods:{
     pagination(page){
-      console.log('select page',page);
       const fromNum = (page-1)*this.itemPerPage;
       const toNum = page*this.itemPerPage;
 
-      console.log(fromNum);
-      console.log(toNum);
       this.projectList = this.filteredResult.slice(fromNum , toNum);
-      console.log(this.projectList.slice(fromNum , toNum));
     },
     selectProject(id){
-      console.log('select project');
+      // console.log('select project');
       this.project = this.projectList.find(project => project.projectId == id)
-      console.log(this.project);
+      // console.log(this.project);
 
     },
     filterProject(filter){
-      // console.log('filter project in Project.vue', filter);
-      // console.log('filter project in Project.vue', filter.isFeatured);
       var filteredProject = [];
 
       this.projects.map(project => {
@@ -139,30 +134,27 @@ export default {
           filteredProject.push(project)   
         })
 
-      console.log(filteredProject);
+      this.totalPage = Math.ceil(filteredProject.length/this.itemPerPage);
       this.filteredResult = filteredProject;
       this.projectList = filteredProject
     },
     resetFilter(){
-      this.projectList = this.projects
+      this.projectList = this.projects.slice(0,this.itemPerPage);
+      this.filteredResult = this.projects;
+      this.totalPage = Math.ceil(this.projects.length/this.itemPerPage);
     }
   },
   created(){
-    console.log(this.$route.params)
-    this.projects = this.$route.params.originalProjects;
-    console.log(this.projects)
-    this.project = this.projects[0];
-    this.projectList = [...this.projects];
+    this.projects = this.$route.params.originalProjects; //original Project list from App.vue
+    this.project = this.projects[0]; //current project the user selected
+    // this.projectList = [...this.projects];
     this.categoryList = [...new Set(this.projects.map(project =>  project.categoryName))]
     this.maxFunding = Math.max(...this.projects.map(project =>  project.fundingGoal))
 
     this.totalPage = Math.ceil(this.projects.length/this.itemPerPage);
-    this.filteredResult = [...this.projects];
+    this.filteredResult = [...this.projects]; //projects list if filter applied, and also used for pagination if filter is applied
     this.projectList = [...this.projects].slice(0,this.itemPerPage);
-    // console.log(this.categoryList)
-    // console.log(this.maxFunding)
   }
-
 }
 </script>
 
