@@ -25,7 +25,7 @@ as a file in order to centrailse all constant parameters for better configuratiu
 This project used boostrap library to better render element on UI.
 
 ### Data Format
- 
+```
  Funding Project:{
     projectId: Unique ID of each funding project 
     projectName: StringName of funding project
@@ -47,7 +47,7 @@ This project used boostrap library to better render element on UI.
     featured: Boolean to set if this project is featured or not
     read: Boolean of user read or not
  }
-    
+```  
 
 ### Improvements
 There are some improvements could made with this project.
